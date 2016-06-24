@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+require('dotenv').config();
 
 module.exports = {
     devTool: 'source-map',
@@ -38,8 +39,8 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"',
-            __DEVELOPMENT__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development'))
+            __DEVELOPMENT__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development')),
+            __API_ADDRESS__: JSON.stringify(process.env.API_ADDRESS || 'http://localhost:8080')
         })
     ]
 }
