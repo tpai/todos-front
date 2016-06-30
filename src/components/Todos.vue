@@ -5,10 +5,10 @@
     <button>Add Todo</button>
     <button v-on:click.prevent="removeTodoClick">Clear Completed</button>
     <ul>
-        <li v-for="(index, todo) in todos">
+        <li v-for="todo in todos">
             <span
                 v-bind:style="{ 'textDecoration': todo.done ? 'line-through' : 'none' }"
-                v-on:click="toggleTodoClick(index)">
+                v-on:click="toggleTodoClick(todo)">
                 {{ todo.title }}
             </span>
         </li>
@@ -41,11 +41,11 @@ export default {
             });
             this.todo = "";
         },
-        toggleTodoClick: function(id) {
-            this.toggleTodo(id);
+        toggleTodoClick: function(todo) {
+            this.toggleTodo(todo);
         },
         removeTodoClick: function() {
-            this.removeTodo();
+            this.removeTodo(this.$store.state.todos);
         }
     },
     vuex: {

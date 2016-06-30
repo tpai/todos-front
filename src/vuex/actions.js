@@ -1,15 +1,27 @@
 import fetch from "isomorphic-fetch";
 
 export const addTodo = ({ dispatch }, todo) => {
-    dispatch('ADD_TODO', todo);
+    (async () => {
+        const res = await fetch(`${__API_ADDRESS__}/tasks`, fetchOpts('POST', todo));
+        res.status >= 200 && getTodoList({ dispatch });
+    })();
 }
 
-export const removeTodo = ({ dispatch }) => {
-    dispatch('REMOVE_TODO');
+export const removeTodo = ({ dispatch }, todos) => {
+    const req = todos.map(todo => {
+        todo.done && (async () => {
+            const res = await fetch(`${__API_ADDRESS__}/tasks/${todo.id}`, fetchOpts('DELETE'));
+            res.status >= 200 && getTodoList({ dispatch });
+        })();
+    });
 }
 
-export const toggleTodo = ({ dispatch }, index) => {
-    dispatch('TOGGLE_TODO', index);
+export const toggleTodo = ({ dispatch }, todo) => {
+    (async () => {
+        const req = Object.assign({}, todo, { done: !todo.done });
+        const res = await fetch(`${__API_ADDRESS__}/tasks/${req.id}`, fetchOpts('PUT', req));
+        res.status >= 200 && getTodoList({ dispatch });
+    })();
 }
 
 export const getTodoList = ({ dispatch }) => {
@@ -27,4 +39,15 @@ export const getTodoList = ({ dispatch }) => {
             ]);
         }
     })();
+}
+
+export const fetchOpts = (method, req) => {
+    return {
+        method,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(req)
+    }
 }

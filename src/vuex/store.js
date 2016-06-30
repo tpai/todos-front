@@ -8,26 +8,24 @@ const state = {
 }
 
 const mutations = {
-    ADD_TODO (state, todo) {
-        state.todos.push(todo);
-    },
-    REMOVE_TODO (state) {
-        Object.assign(state, {
-            todos: state.todos.filter(todo => !todo.done)
-        });
-    },
-    TOGGLE_TODO (state, actionIndex) {
-        Object.assign(state, {
-            todos: state.todos.map((todo, index) => {
-                if (index === actionIndex) {
-                    return Object.assign({}, todo, {
-                        done: !todo.done
-                    });
-                }
-                return todo;
-            })
-        });
-    },
+    // ADD_TODO (state, todo) {
+    //     state.todos.push(todo);
+    // },
+    // REMOVE_TODO (state) {
+    //     Object.assign(state, {
+    //         todos: state.todos.filter(todo => !todo.done)
+    //     });
+    // },
+    // TOGGLE_TODO (state, action) {
+    //     Object.assign(state, {
+    //         todos: state.todos.map(todo => {
+    //             if (todo.id === action.id) {
+    //                 return Object.assign({}, todo, action);
+    //             }
+    //             return todo;
+    //         })
+    //     });
+    // },
     GET_TODO_LIST (state, todos) {
         state.todos = todos;
     }
