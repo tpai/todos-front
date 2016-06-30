@@ -4,6 +4,14 @@ export const addTodo = ({ dispatch }, todo) => {
     dispatch('ADD_TODO', todo);
 }
 
+export const removeTodo = ({ dispatch }) => {
+    dispatch('REMOVE_TODO');
+}
+
+export const toggleTodo = ({ dispatch }, id) => {
+    dispatch('TOGGLE_TODO', id);
+}
+
 export const getTodoList = ({ dispatch }) => {
     (async () => {
         const res = await fetch(`${__API_ADDRESS__}/tasks`);
@@ -13,9 +21,9 @@ export const getTodoList = ({ dispatch }) => {
         }
         else {
             dispatch('GET_TODO_LIST', [
-                { title: "TODO A" },
-                { title: "TODO B" },
-                { title: "TODO C" }
+                { id: 1, title: "TODO A", done: false },
+                { id: 2, title: "TODO B", done: false },
+                { id: 3, title: "TODO C", done: false }
             ]);
         }
     })();
