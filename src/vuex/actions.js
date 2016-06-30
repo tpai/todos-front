@@ -8,8 +8,8 @@ export const removeTodo = ({ dispatch }) => {
     dispatch('REMOVE_TODO');
 }
 
-export const toggleTodo = ({ dispatch }, id) => {
-    dispatch('TOGGLE_TODO', id);
+export const toggleTodo = ({ dispatch }, index) => {
+    dispatch('TOGGLE_TODO', index);
 }
 
 export const getTodoList = ({ dispatch }) => {
@@ -21,9 +21,9 @@ export const getTodoList = ({ dispatch }) => {
         }
         else {
             dispatch('GET_TODO_LIST', [
-                { id: 1, title: "TODO A", done: false },
-                { id: 2, title: "TODO B", done: false },
-                { id: 3, title: "TODO C", done: false }
+                { title: "TODO A", done: false },
+                { title: "TODO B", done: false },
+                { title: "TODO C", done: false }
             ]);
         }
     })();

@@ -2,13 +2,13 @@
 <form v-on:submit.prevent="addTodoSubmit">
     <h1>Todo List</h1>
     <input type="text" v-model="todo">
-    <button>Add</button>
+    <button>Add Todo</button>
     <button v-on:click.prevent="removeTodoClick">Clear Completed</button>
     <ul>
-        <li v-for="todo in todos">
+        <li v-for="(index, todo) in todos">
             <span
                 v-bind:style="{ 'textDecoration': todo.done ? 'line-through' : 'none' }"
-                v-on:click="toggleTodoClick(todo.id)">
+                v-on:click="toggleTodoClick(index)">
                 {{ todo.title }}
             </span>
         </li>
@@ -36,7 +36,8 @@ export default {
     methods: {
         addTodoSubmit: function(e) {
             this.addTodo({
-                title: this.todo
+                title: this.todo,
+                done: false
             });
             this.todo = "";
         },

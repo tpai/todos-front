@@ -16,10 +16,10 @@ const mutations = {
             todos: state.todos.filter(todo => !todo.done)
         });
     },
-    TOGGLE_TODO (state, id) {
+    TOGGLE_TODO (state, actionIndex) {
         Object.assign(state, {
             todos: state.todos.map((todo, index) => {
-                if (index + 1 === id) {
+                if (index === actionIndex) {
                     return Object.assign({}, todo, {
                         done: !todo.done
                     });
