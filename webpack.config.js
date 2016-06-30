@@ -13,7 +13,7 @@ module.exports = {
         hot: true
     },
     entry: {
-      'dist/bundle': 'entry'
+      'www/bundle': 'entry'
     },
     resolve: {
         root: [ path.resolve('./src') ],
