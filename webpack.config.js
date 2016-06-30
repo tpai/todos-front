@@ -13,14 +13,14 @@ module.exports = {
         hot: true
     },
     entry: {
-      'www/bundle': 'entry'
+      'bundle': 'entry'
     },
     resolve: {
         root: [ path.resolve('./src') ],
         extensions: ['', '.js', '.vue']
     },
     output: {
-        path: './',
+        path: 'www/',
         filename: '[name].js'
     },
     module: {
@@ -40,7 +40,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             __DEVELOPMENT__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development')),
-            __API_ADDRESS__: JSON.stringify(process.env.API_ADDRESS || 'http://localhost:8080')
+            __API_ADDRESS__: JSON.stringify(process.env.API_ADDRESS)
         })
     ]
 }
