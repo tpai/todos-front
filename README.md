@@ -1,6 +1,8 @@
 # Todos In Vue.js & Vuex
 A todolist project for practicing new library.
 
+![](http://i.giphy.com/xT8qBlU8qBuWWGHrt6.gif)
+
 ## Install Dependencies
 
 ```
