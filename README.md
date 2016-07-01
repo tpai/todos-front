@@ -10,7 +10,7 @@ npm i
 ## Run Mock API Server
 
 ```
-// http://localhost:3000/tasks
+# http://localhost:3000/tasks
 json-server -w db.json
 ```
 
@@ -23,7 +23,7 @@ cp .env.example .env
 ## Start Devlopment Server
 
 ```
-// http://localhost:8080
+# http://localhost:8080
 npm start
 ```
 
