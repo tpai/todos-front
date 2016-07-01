@@ -7,7 +7,16 @@ export const addTodo = ({ dispatch }, todo) => {
     })();
 }
 
-export const removeTodo = ({ dispatch }, todos) => {
+export const removeAll = ({ dispatch }, todos) => {
+    const req = todos.map(todo => {
+        (async () => {
+            const res = await fetch(`${__API_ADDRESS__}/tasks/${todo.id}`, fetchOpts('DELETE'));
+            res.status >= 200 && getTodoList({ dispatch });
+        })();
+    });
+}
+
+export const removeCompleted = ({ dispatch }, todos) => {
     const req = todos.map(todo => {
         todo.done && (async () => {
             const res = await fetch(`${__API_ADDRESS__}/tasks/${todo.id}`, fetchOpts('DELETE'));
