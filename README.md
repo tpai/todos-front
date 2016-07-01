@@ -14,6 +14,12 @@ npm i
 json-server -w db.json
 ```
 
+## Create .env File
+
+```
+cp .env.example .env
+```
+
 ## Start Devlopment Server
 
 ```
