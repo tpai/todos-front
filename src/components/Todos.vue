@@ -34,7 +34,7 @@ import {
 } from 'vuex/actions';
 
 export default {
-    ready() {
+    mounted() {
         this.getTodoList();
     },
     data() {
